@@ -129,9 +129,7 @@
       transition: background 0.15s ease, color 0.15s ease;
     }
 
-    .cell:nth-child(3n) { border-right: 2px solid var(--line-bold); }
-    .cell:nth-child(9n) { border-right: 1px solid var(--line); }
-
+    .cell.subgrid-right { border-right: 2px solid var(--line-bold); }
     .cell.subgrid-bottom { border-bottom: 2px solid var(--line-bold); }
     .cell.fixed {
       background: var(--fixed);
@@ -452,7 +450,9 @@
         input.maxLength = 1;
 
         const row = Math.floor(idx / SIZE);
+        const col = idx % SIZE;
         if ((row + 1) % 3 === 0 && row !== 8) input.classList.add('subgrid-bottom');
+        if ((col + 1) % 3 === 0 && col !== 8) input.classList.add('subgrid-right');
 
         if (puzzleFlat[idx] !== 0) {
           input.value = puzzleFlat[idx];
